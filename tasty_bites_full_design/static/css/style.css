@@ -1,0 +1,92 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    color: #fff;
+    background: url('../images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+.overlay {
+    background-color: rgba(0, 0, 0, 0.75);
+    min-height: 100vh;
+    padding-bottom: 50px;
+}
+.site-header {
+    background-color: rgba(211, 84, 0, 0.9);
+    padding: 20px 0;
+}
+.site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.logo {
+    font-size: 32px;
+    margin: 0;
+    font-weight: bold;
+}
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 18px;
+}
+.nav-links a:hover,
+.nav-links .active {
+    text-decoration: underline;
+}
+.menu-section {
+    padding: 60px 20px;
+    text-align: center;
+}
+.section-title {
+    font-size: 38px;
+    margin-bottom: 50px;
+    color: #f9c78b;
+}
+.menu-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+.menu-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    width: 260px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    text-align: center;
+    transition: transform 0.3s ease;
+    color: #fff;
+}
+.menu-item:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.menu-item img {
+    width: 100%;
+    border-radius: 10px;
+    height: 180px;
+    object-fit: cover;
+}
+.menu-item h3 {
+    margin-top: 15px;
+    font-size: 24px;
+    color: #f39c12;
+}
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #f1c40f;
+    margin-top: 10px;
+}
+@media (max-width: 768px) {
+    .menu-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+}

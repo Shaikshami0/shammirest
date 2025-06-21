@@ -1,27 +1,217 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Menu | Tasty Bites</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <meta charset="UTF-8" />
+  <title>Menu | Tasty Bites</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* Background animation */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(120deg, #ff6a00, #ee0979, #ff6a00);
+      background-size: 600% 600%;
+      animation: waveBackground 12s ease infinite;
+      z-index: -1;
+    }
+
+    @keyframes waveBackground {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      min-height: 100vh;
+      padding-bottom: 50px;
+    }
+
+    header {
+      background-color: rgba(255, 100, 0, 0.95);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    header h1 {
+      font-size: 32px;
+      animation: bounceIn 1s;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+      text-shadow: 0 0 5px #fff176;
+    }
+
+    main {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    h2 {
+      font-size: 38px;
+      margin-bottom: 40px;
+      color: #ffd700;
+      animation: fadeInDown 1s;
+    }
+
+    .menu-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .menu-item {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 25px;
+      width: 260px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: floatUp 1s ease forwards;
+    }
+
+    .menu-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .emoji {
+      font-size: 48px;
+      animation: bounce 2s infinite;
+      margin-bottom: 10px;
+    }
+
+    .menu-item h3 {
+      font-size: 24px;
+      color: #ffd700;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: bold;
+      color: #ffff66;
+      margin-top: 8px;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes bounceIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+
+      .menu-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .menu-item {
+        width: 90%;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="overlay">
     <header>
-        <h1>Menu</h1>
-        <nav>
-            <a href="/">Home</a>
-            <a href="/menu">Menu</a>
-            <a href="/contact">Contact</a>
-        </nav>
+      <h1>🍴 Tasty Bites</h1>
+      <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('menu') }}">Menu</a>
+        <a href="{{ url_for('contact') }}">Contact</a>
+      </nav>
     </header>
+
     <main>
-        <h2>Our Specials</h2>
-        <ul>
-            <li>Pizza - ₹250</li>
-            <li>Pasta - ₹200</li>
-            <li>Burger - ₹150</li>
-        </ul>
+      <h2>🍽️ Our Specials</h2>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <div class="emoji">🍕</div>
+          <h3>Pizza</h3>
+          <p class="price">₹250</p>
+        </div>
+        <div class="menu-item">
+          <div class="emoji">🍝</div>
+          <h3>Pasta</h3>
+          <p class="price">₹200</p>
+        </div>
+        <div class="menu-item">
+          <div class="emoji">🍔</div>
+          <h3>Burger</h3>
+          <p class="price">₹150</p>
+        </div>
+        <div class="menu-item">
+          <div class="emoji">🍹</div>
+          <h3>Mojito</h3>
+          <p class="price">₹80</p>
+        </div>
+        <div class="menu-item">
+          <div class="emoji">🧁</div>
+          <h3>Cupcake</h3>
+          <p class="price">₹90</p>
+        </div>
+        <div class="menu-item">
+          <div class="emoji">🍦</div>
+          <h3>Ice Cream</h3>
+          <p class="price">₹70</p>
+        </div>
+      </div>
     </main>
+  </div>
 </body>
 </html>
